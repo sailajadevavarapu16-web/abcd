@@ -33,7 +33,7 @@ if (bgMusic) {
     bgMusic.volume = 0.3;
 }
 
-// Music On/Off button and volume – in last section. First: auto-play on click anywhere.
+// Music On/Off button and volume – in last section. Try to auto-play on load.
 (function() {
     const music = document.getElementById('bg-music');
     const toggleBtn = document.getElementById('music-toggle');
@@ -47,15 +47,17 @@ if (bgMusic) {
         toggleBtn.classList.toggle('off', isPaused);
     }
 
-    // Auto-play on first click anywhere on the page
-    document.addEventListener('click', function startMusicOnce() {
+    // Try to auto-play as soon as page loads (may still be blocked by some browsers)
+    window.addEventListener('load', () => {
         if (music.paused) {
             music.muted = false;
             music.volume = (volumeInput ? Number(volumeInput.value) / 100 : 0.3);
-            music.play();
-            updateToggleLabel();
+            music.play().then(updateToggleLabel).catch(() => {
+                // If blocked, keep button so user can start manually
+                updateToggleLabel();
+            });
         }
-    }, { once: true });
+    });
 
     if (!toggleBtn || !volumeInput) return;
 

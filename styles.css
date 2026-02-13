@@ -202,8 +202,18 @@ p {
 /* Letter Section */
 #letter {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.0);
     text-align: center;
+}
+
+.letter-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 24px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(214, 51, 132, 0.25);
+    border: 2px solid rgba(255, 179, 186, 0.7);
 }
 
 .letter-text {
