@@ -511,6 +511,15 @@ p {
     .film-frame img {
         height: 260px;
     }
+
+    /* Letter responsive */
+    .letter-container {
+        padding: 24px 18px;
+        margin: 0 16px;
+    }
+    .letter-text {
+        font-size: 1.3em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -561,6 +570,15 @@ p {
     }
     .film-strip-holes {
         width: 18px;
+    }
+
+    /* Letter responsive – small phones */
+    .letter-container {
+        padding: 20px 14px;
+        margin: 0 12px;
+    }
+    .letter-text {
+        font-size: 1.15em;
     }
 }
 /* Why I Love You */
