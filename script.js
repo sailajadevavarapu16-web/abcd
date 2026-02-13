@@ -27,13 +27,14 @@ galleryImages.forEach((img, index) => {
     img.style.animationDelay = `${index * 0.2}s`;
 });
 
-// Background music – start muted until user interacts (e.g. clicks music button)
+// Background music – auto-play setup
 const bgMusic = document.getElementById('bg-music');
 if (bgMusic) {
     bgMusic.volume = 0.3;
+    bgMusic.muted = false; // Ensure not muted for autoplay
 }
 
-// Music On/Off button and volume – in last section. Try to auto-play on load.
+// Music On/Off button and volume – auto-play immediately
 (function() {
     const music = document.getElementById('bg-music');
     const toggleBtn = document.getElementById('music-toggle');
@@ -47,17 +48,37 @@ if (bgMusic) {
         toggleBtn.classList.toggle('off', isPaused);
     }
 
-    // Try to auto-play as soon as page loads (may still be blocked by some browsers)
-    window.addEventListener('load', () => {
+    function tryAutoPlay() {
         if (music.paused) {
             music.muted = false;
             music.volume = (volumeInput ? Number(volumeInput.value) / 100 : 0.3);
-            music.play().then(updateToggleLabel).catch(() => {
-                // If blocked, keep button so user can start manually
-                updateToggleLabel();
-            });
+            const playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    updateToggleLabel();
+                }).catch(() => {
+                    // Autoplay blocked - will need user interaction
+                    updateToggleLabel();
+                });
+            }
         }
-    });
+    }
+
+    // Try multiple times for better browser compatibility
+    tryAutoPlay(); // Try immediately
+    
+    // Try when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', tryAutoPlay);
+    }
+    
+    // Try when page fully loads
+    window.addEventListener('load', tryAutoPlay);
+    
+    // Also try on first user interaction as fallback
+    document.addEventListener('click', function startMusicOnce() {
+        tryAutoPlay();
+    }, { once: true });
 
     if (!toggleBtn || !volumeInput) return;
 
