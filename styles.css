@@ -1,0 +1,851 @@
+/* General Styles */
+body {
+    font-family: 'Dancing Script', cursive;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f0, #ffb3ba, #ffcccc);
+    color: #333;
+    overflow-x: hidden;
+}
+
+.main-content {
+    position: relative;
+    z-index: 2;
+}
+
+h1, h2, h3 {
+    font-family: 'Dancing Script', cursive;
+    color: #d63384;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Landing Section */
+#landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Gallery Section */
+#gallery {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gallery-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: slideIn 1s ease-out;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes slideIn {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Beautiful Her Section – film strip */
+#beautiful-her {
+    position: relative;
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+#beautiful-her h2 {
+    margin-bottom: 30px;
+}
+
+/* Bear images left & right of Beautiful Her */
+.beautiful-her-bear {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 165px;
+    height: auto;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.beautiful-her-bear-left {
+    left: 20px;
+    top: 90%;
+    transform: translateY(-50%);
+}
+
+.beautiful-her-bear-right {
+    right: 20px;
+}
+
+.film-strip {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1150px;
+    margin: 0 auto;
+    background: #1a1a1a;
+    padding: 14px 0;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 2px #333;
+}
+
+/* Panda on scooter – always running on the film strip */
+.film-strip-mascot {
+    position: absolute;
+    bottom: -8px;
+    left: -80px;
+    width: 70px;
+    height: auto;
+    pointer-events: none;
+    z-index: 3;
+    animation: mascotRunning 12s linear infinite;
+}
+
+@keyframes mascotRunning {
+    0% { left: -80px; }
+    100% { left: 100%; }
+}
+
+.film-strip-holes {
+    width: 22px;
+    flex-shrink: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        #0d0d0d 0,
+        #0d0d0d 6px,
+        #2a2a2a 6px,
+        #2a2a2a 10px,
+        #0d0d0d 10px,
+        #0d0d0d 16px
+    );
+    border-radius: 2px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.5);
+}
+
+.film-holes-left {
+    margin-right: 6px;
+}
+
+.film-holes-right {
+    margin-left: 6px;
+}
+
+.film-strip-frames {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 4px;
+    min-width: 0;
+}
+
+.film-strip-track {
+    display: flex;
+    gap: 8px;
+    padding: 0 4px;
+    width: max-content;
+    animation: filmStripScroll 55s linear infinite;
+}
+
+@keyframes filmStripScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.film-frame {
+    flex: 0 0 220px;
+    overflow: hidden;
+    background: #000;
+    border-radius: 2px;
+}
+
+.film-frame img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.film-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* Letter Section */
+#letter {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+.letter-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    color: #d63384;
+}
+
+/* Timeline Section */
+#timeline {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.timeline-item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 500px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Ending Section */
+/* Ours lil kidoo */
+#ours-lil-kidoo {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#ours-lil-kidoo h2 {
+    margin-bottom: 24px;
+}
+
+.lil-kidoo-frame-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.lil-kidoo-slot {
+    display: inline-block;
+    padding: 14px;
+    background: linear-gradient(145deg, #fff0f5, #ffe4ec);
+    border: 3px solid #d63384;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(214, 51, 132, 0.25), inset 0 0 0 1px rgba(255,255,255,0.5);
+}
+
+.lil-kidoo-slot img {
+    width: 260px;
+    height: 320px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 4px;
+    display: block;
+    background: rgba(255, 248, 250, 0.8);
+}
+
+#ending {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.waist-frame-wrap {
+    position: relative;
+    display: inline-block;
+    margin: 16px auto 0;
+}
+
+.waist-frame-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("images/frame_1.png") no-repeat center;
+    background-size: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ending-waist-pic {
+    display: block;
+    width: 360px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    z-index: 1;
+    box-shadow: 0 6px 20px rgba(214, 51, 132, 0.2);
+}
+
+/* Music controls – last section */
+.music-controls {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.music-btn {
+    background: #d63384;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-family: 'Dancing Script', cursive;
+    border-radius: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.35);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.music-btn:hover {
+    background: #c41e6e;
+    transform: scale(1.05);
+}
+
+.music-btn.off {
+    background: #888;
+}
+
+.volume-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: #d63384;
+}
+
+.music-volume {
+    width: 120px;
+    height: 8px;
+    accent-color: #d63384;
+    cursor: pointer;
+}
+
+.heart-animation {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0zMCAyMEMxNSAyMCAxNSAzNSAxNSA1MEMxNSA2NSAyMCA3MCAzMCA3MEM0MCA3MCA1MCA2NSA1MCA1MEM1MCAzNSA1MCAyMCAzMCAyMFoiIGZpbGw9IiNkNjMzODQiLz4KPC9zdmc+') no-repeat center;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Container for hearts rising from bottom */
+.hearts-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Floating Hearts (from bottom) */
+.heart-float {
+    position: absolute;
+    bottom: -50px;
+    font-size: 1.5em;
+    color: #d63384;
+    pointer-events: none;
+    animation: riseUp linear forwards;
+    text-shadow: 0 0 8px rgba(214, 51, 132, 0.4);
+}
+
+.heart-float:nth-child(odd) {
+    color: #e91e63;
+}
+
+@keyframes riseUp {
+    0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Mouse hearts (optional, keep if desired) */
+.heart {
+    position: absolute;
+    font-size: 2em;
+    color: #d63384;
+    pointer-events: none;
+    animation: float 3s ease-out forwards;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gallery-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .gallery-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .timeline-item {
+        width: 90%;
+    }
+
+    /* Landing text + stickers */
+    #landing h1 {
+        font-size: 1.9rem;
+        padding: 0 20px;
+    }
+
+    #landing p {
+        font-size: 1rem;
+        padding: 0 25px;
+    }
+
+    .landing-sticker1,
+    .landing-sticker2 {
+        width: 95px;
+    }
+
+    .landing-sticker1 {
+        right: 10px;
+        bottom: 20px;
+    }
+
+    .landing-sticker2 {
+        left: 10px;
+        top: 20px;
+    }
+
+    /* Memory frames slightly smaller on tablets/phones */
+    .memory-frame {
+        width: 220px;
+        height: 220px;
+    }
+
+    /* Polaroids adapt */
+    .polaroid {
+        width: 150px;
+    }
+    .cutest-moments-container .polaroid {
+        width: 180px;
+    }
+    .cutest-moments-container .polaroid img {
+        height: 165px;
+    }
+
+    /* Beautiful Her film strip & bears */
+    .film-strip {
+        max-width: 100%;
+    }
+    .beautiful-her-bear {
+        width: 115px;
+    }
+    .beautiful-her-bear-left { left: 8px; }
+    .beautiful-her-bear-right { right: 8px; }
+    .film-frame {
+        flex: 0 0 150px;
+    }
+    .film-frame img {
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    #landing h1 {
+        font-size: 1.6rem;
+    }
+
+    .memory-frame {
+        width: 200px;
+        height: 200px;
+    }
+
+    .gallery-img {
+        width: 140px;
+        height: 140px;
+        border-radius: 12px;
+    }
+
+    .polaroid-container {
+        gap: 16px;
+    }
+
+    .polaroid {
+        width: 140px;
+    }
+    .cutest-moments-container .polaroid {
+        width: 160px;
+    }
+    .cutest-moments-container .polaroid img {
+        height: 145px;
+    }
+
+    /* Beautiful Her film strip & bears */
+    .film-frame {
+        flex: 0 0 120px;
+    }
+    .beautiful-her-bear {
+        width: 90px;
+    }
+    .beautiful-her-bear-left { left: 4px; }
+    .beautiful-her-bear-right { right: 4px; }
+    .film-frame img {
+        height: 220px;
+    }
+    .film-strip-holes {
+        width: 18px;
+    }
+}
+/* Why I Love You */
+#reasons {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.85);
+}
+
+.reasons-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reasons-list li {
+    font-size: 1.4em;
+    margin: 12px 0;
+    color: #d63384;
+}
+
+/* Polaroid Section */
+/* Polaroid Section */
+#polaroids {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.polaroid-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.polaroid {
+    width: 180px;
+    background: white;
+    padding: 10px 10px 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    text-align: center;
+    transition: transform 0.3s ease;
+    animation: polaroidShake 2.5s ease-in-out infinite;
+}
+
+@keyframes polaroidShake {
+    0%, 100% { transform: rotate(var(--polaroid-angle, -3deg)) translateX(0); }
+    25% { transform: rotate(var(--polaroid-angle, -3deg)) translateX(-4px); }
+    50% { transform: rotate(var(--polaroid-angle, -3deg)) translateX(4px); }
+    75% { transform: rotate(var(--polaroid-angle, -3deg)) translateX(-2px); }
+}
+
+.polaroid:hover {
+    animation: none;
+    transform: rotate(0deg) scale(1.05);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.polaroid span {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.1em;
+    color: #d63384;
+}
+
+/* Cutest Moments – Polaroids */
+#cutest-moments {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 230, 240, 0.9) 100%);
+}
+
+#cutest-moments h2 {
+    margin-bottom: 28px;
+}
+
+.cutest-moments-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Cutest Moments – larger frames so heads aren't cut off */
+.cutest-moments-container .polaroid {
+    width: 220px;
+}
+
+.cutest-moments-container .polaroid img {
+    height: 200px;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/*#polaroids {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.polaroid-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.polaroid {
+    width: 160px;
+    height: 190px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    font-size: 1.1em;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform: rotate(-3deg);
+    transition: transform 0.3s;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}*/
+
+/* Secret – password protected kisses */
+#secret {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+}
+
+.secret-btn {
+    background: #d63384;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-family: 'Dancing Script', cursive;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.secret-btn:hover {
+    background: #c41e6e;
+    transform: scale(1.05);
+}
+
+.secret-msg {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.4em;
+    color: #d63384;
+}
+
+/* Kisses slot */
+.kisses-slot {
+    margin-top: 30px;
+}
+
+.kisses-slot h3 {
+    font-family: 'Dancing Script', cursive;
+    color: #d63384;
+    font-size: 1.6em;
+    margin-bottom: 20px;
+}
+
+.kisses-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.kiss-frame {
+    width: 180px;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(214, 51, 132, 0.25);
+    border: 3px solid #ffb3ba;
+}
+
+.kiss-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.add-pics-wrap {
+    margin-top: 16px;
+}
+
+.add-pics-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #d63384, #c41e6e);
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    font-family: 'Dancing Script', cursive;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-pics-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
+}
+
+/* Countdown */
+#countdown {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#days-count {
+    font-size: 1.6em;
+    color: #d63384;
+}
+
+.landing {
+    position: relative;      /* anchor for absolute positioning */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-sticker1 {
+    position: absolute;
+    right: 30px;
+    bottom: 50px;
+    width: 130px;
+    animation: floatSticker 3s ease-in-out infinite;
+}
+.landing-sticker2 {
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    width: 130px;
+    animation: floatSticker 3s ease-in-out infinite;
+}
+
+
+/* Soft floating animation */
+@keyframes floatSticker {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
+/* 💖 Memory Frame */
+.memory-frame {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 💕 Heart Frame PNG */
+.memory-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("images/Frame.png") no-repeat center;
+    background-size: contain;  /* show full frame without cropping */
+    z-index: 2;                /* 🔼 keep frame on top */
+    pointer-events: none;
+}
+
+/* 🖼 Image inside */
+.gallery-img {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    object-fit: cover;      /* ✅ MOST IMPORTANT */
+    border-radius: 14px;
+    z-index: 1;             /* 🔽 image stays behind frame */
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease;
+}
+
+/* Hover zoom */
+.memory-frame:hover .gallery-img {
+    transform: scale(1.08);
+}
